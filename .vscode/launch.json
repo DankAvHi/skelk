@@ -1,15 +1,55 @@
 {
-     // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
-     // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
-     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+     // Use IntelliSense to learn about possible attributes.
+     // Hover to view descriptions of existing attributes.
+     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
      "version": "0.2.0",
      "configurations": [
           {
-               "type": "chrome",
+               "name": "Client",
                "request": "launch",
-               "name": "Запустить Chrome на localhost",
+               "type": "chrome",
                "url": "http://localhost:3000",
-               "webRoot": "${workspaceFolder}"
+               "webRoot": "${workspaceFolder}/client"
+          },
+          {
+               "name": "Client_secure",
+               "request": "launch",
+               "type": "chrome",
+               "url": "https://localhost:3000",
+               "webRoot": "${workspaceFolder}/client"
+          },
+
+          {
+               "type": "node",
+               "request": "launch",
+               "name": "Server",
+               "runtimeExecutable": "nodemon",
+               "program": "${workspaceFolder}/src/index.ts",
+               "restart": true,
+               "console": "integratedTerminal",
+               "internalConsoleOptions": "neverOpen",
+               "args": ["development"]
+          },
+          {
+               "type": "node",
+               "request": "launch",
+               "name": "Server_secure",
+               "runtimeExecutable": "nodemon",
+               "program": "${workspaceFolder}/src/index.ts",
+               "restart": true,
+               "console": "integratedTerminal",
+               "internalConsoleOptions": "neverOpen",
+               "args": ["development", "secure"]
+          }
+     ],
+     "compounds": [
+          {
+               "name": "Server/Client",
+               "configurations": ["Server", "Client"]
+          },
+          {
+               "name": "Server/Client secure",
+               "configurations": ["Server_secure", "Client_secure"]
           }
      ]
 }
