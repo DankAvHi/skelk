@@ -1,0 +1,9 @@
+@import url("./fonts/index.font.css");
+@import url("./colors.css");
+:root {
+     --app-background: url("../../static/background.jpg");
+     --app-font-size: 1em;
+     --app-font-weight: 400;
+     --app-font-family: var(--inter-font);
+     --app-accient-color: var(--blue-100);
+}

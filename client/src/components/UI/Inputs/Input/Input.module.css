@@ -1,0 +1,46 @@
+.Input {
+     border: 2px solid var(--app-accient-color);
+     border-radius: 100px;
+
+     padding: 10px;
+     padding-left: 32px;
+
+     width: 100%;
+
+     font-size: 1.25rem;
+     color: var(--black-20);
+}
+
+@media screen and (max-width: 1024px) {
+     .Input {
+          font-size: 1rem;
+     }
+}
+
+.Input_withButton {
+     border: none;
+     border-radius: unset;
+
+     padding: 0;
+     padding-left: 32px;
+}
+
+.InputContainer {
+     border: 2px solid var(--app-accient-color);
+     border-radius: 100px;
+
+     padding: 10px;
+     padding-left: 0;
+
+     width: 100%;
+
+     display: flex;
+     align-items: center;
+     gap: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+     .InputContainer {
+          padding: 4px;
+     }
+}

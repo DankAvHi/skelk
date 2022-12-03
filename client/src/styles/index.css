@@ -1,0 +1,57 @@
+@import url("./variables.css");
+* {
+     list-style: none;
+     margin: 0;
+
+     border: none;
+
+     padding: 0;
+
+     box-sizing: border-box;
+     scroll-behavior: smooth;
+
+     background: transparent;
+
+     font-family: var(--app-font-family);
+     font-size: var(--app-font-size);
+     font-weight: var(--app-font-weight);
+     text-decoration: none;
+     color: var(--black-00);
+
+     outline: none;
+}
+
+a,
+button,
+input[type="submit"] {
+     cursor: pointer;
+}
+
+img {
+     user-drag: none;
+     -webkit-user-drag: none;
+     user-select: none;
+     -moz-user-select: none;
+     -webkit-user-select: none;
+     -ms-user-select: none;
+}
+
+a,
+p,
+span {
+     color: inherit;
+     font-size: inherit;
+     font-weight: inherit;
+}
+
+html,
+body {
+     min-height: 100%;
+}
+
+body {
+     background: var(--app-background);
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+}

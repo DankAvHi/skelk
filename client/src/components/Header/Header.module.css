@@ -1,0 +1,83 @@
+.Header {
+     margin-bottom: 100px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+     gap: 124px;
+}
+
+.info {
+     border-radius: 0 0 36px 36px;
+
+     padding: 24px;
+
+     width: 100%;
+
+     background-color: var(--app-accient-color);
+
+     display: flex;
+     align-items: center;
+     gap: 24px;
+}
+
+@media screen and (max-width: 768px) {
+     .info {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+     }
+}
+
+.infoBlock {
+     border-right: 1px solid var(--white-100);
+
+     padding-right: 8px;
+
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 8px;
+}
+
+@media screen and (max-width: 768px) {
+     .infoBlock {
+          border-right: none;
+
+          padding-right: 0;
+     }
+}
+
+.infoLine {
+     display: flex;
+     align-items: center;
+     gap: 12px;
+}
+
+.infoTitle,
+.infoText {
+     color: var(--white-100);
+     font-weight: 500;
+}
+
+.infoText {
+     font-size: 1.25rem;
+}
+@media screen and (max-width: 425px) {
+     .infoTitle {
+          font-size: 0.6rem;
+     }
+     .infoText {
+          font-size: 0.8rem;
+     }
+}
+
+.logo {
+     max-width: 100%;
+}
+
+.heading {
+     position: absolute;
+     visibility: hidden;
+}
