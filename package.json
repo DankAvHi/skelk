@@ -4,7 +4,10 @@
      "description": "Site for ordering electroinc components in russia from china",
      "main": "index.js",
      "scripts": {
-          "test": "echo \"Error: no test specified\" && exit 1"
+          "build": "",
+          "start": "",
+          "start-dev": "npx nodemon src/index.ts development",
+          "db-pull": "npx prisma db pull && npx prisma generate"
      },
      "author": "dankAvHi",
      "license": "ISC",
