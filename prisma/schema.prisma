@@ -14,6 +14,10 @@ model admin {
 }
 
 model products {
-  idproducts Int    @id @unique(map: "idproducts_UNIQUE") @default(autoincrement())
-  partNumber String @unique(map: "partNumber_UNIQUE") @db.VarChar(120)
+  idproducts   Int    @id @unique(map: "idproducts_UNIQUE") @default(autoincrement())
+  partNumber   String @unique(map: "partNumber_UNIQUE") @db.VarChar(120)
+  manufacturer String @db.VarChar(120)
+  description  String @db.Text
+  deliveryDate String @db.VarChar(45)
+  price        Int
 }
