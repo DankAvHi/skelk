@@ -1,1 +1,1 @@
-export type BOOLEAN_RESPONSE = Promise<{ succes: boolean }>;
+export type BooleanResponse = Promise<{ succes: boolean }>;
