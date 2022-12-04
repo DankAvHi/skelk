@@ -1,19 +1,23 @@
+import { useCallback } from "react";
 import { LOGIN_API, LOGOUT_API, VERIFY_API } from "../../../../src/shared/api/auth.api.shared";
-import { BooleanResponse } from "../../../../src/shared/types/api.response";
+import { BooleanResponseClient } from "../../../../src/shared/types/api.response";
 import { LoginRequest } from "../../../../src/shared/types/auth";
-import fetcher from "../fetcher";
+import useFetch from "../useFetch.api";
 
 const useAuthApi = () => {
-     const login = async ({ login, password }: LoginRequest): BooleanResponse =>
-          await fetcher(LOGIN_API, {
-               body: JSON.stringify({ login, password }),
-               method: "POST",
-               headers: { "Content-Type": "application/json" },
-          });
-     const verify = async (): BooleanResponse => await fetcher(VERIFY_API, { method: "GET" });
-     const logout = async (): BooleanResponse => await fetcher(LOGOUT_API, { method: "DELETE" });
+     const { fetcher, loading } = useFetch();
+     const login = useCallback(
+          async (req: LoginRequest): BooleanResponseClient =>
+               await fetcher({ url: LOGIN_API, body: req, method: "POST" }),
+          []
+     );
+     const verify = useCallback(async (): BooleanResponseClient => await fetcher({ url: VERIFY_API }), []);
+     const logout = useCallback(
+          async (): BooleanResponseClient => await fetcher({ url: LOGOUT_API, method: "DELETE" }),
+          []
+     );
 
-     return { login, verify, logout };
+     return { login, verify, logout, loading };
 };
 
 export default useAuthApi;

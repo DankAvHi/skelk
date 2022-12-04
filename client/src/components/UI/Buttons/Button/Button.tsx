@@ -10,19 +10,24 @@ const Button = (props: ButtonProps | AnchorProps) => {
                     </button>
                );
           } else {
-               props.external ? (
-                    <a href={props.href} className={`${styles.Button} ${props.className}`}>
+               return props.external ? (
+                    <a href={props.href} className={`${styles.Button} ${props.className}`} onClick={props.onClick}>
                          {props.children}
                     </a>
                ) : (
-                    <Link to={props.href || "#"} className={`${styles.Button} ${props.className}`}>
+                    <Link
+                         to={props.href || "#"}
+                         className={`${styles.Button} ${props.className}`}
+                         onClick={props.onClick}
+                    >
                          {props.children}
                     </Link>
                );
           }
      }
+
      return (
-          <button className={`${styles.Button} ${props.className}`} disabled={props.disabled}>
+          <button className={`${styles.Button} ${props.className}`} disabled={props.disabled} onClick={props.onClick}>
                {props.children}
           </button>
      );
