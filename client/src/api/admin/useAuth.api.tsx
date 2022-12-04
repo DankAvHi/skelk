@@ -5,7 +5,7 @@ import { LoginRequest } from "../../../../src/shared/types/auth";
 import useFetch from "../useFetch.api";
 
 const useAuthApi = () => {
-     const { fetcher, loading } = useFetch();
+     const { fetcher, loading, error } = useFetch();
      const login = useCallback(
           async (req: LoginRequest): BooleanResponseClient =>
                await fetcher({ url: LOGIN_API, body: req, method: "POST" }),
@@ -17,7 +17,7 @@ const useAuthApi = () => {
           []
      );
 
-     return { login, verify, logout, loading };
+     return { login, verify, logout, loading, error };
 };
 
 export default useAuthApi;

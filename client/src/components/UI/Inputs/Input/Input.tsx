@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Button from "../../Buttons/Button/Button";
+import Label from "../../Labels/Label/Label";
 import styles from "./Input.module.css";
 
 const Input = (props: InputProps | InputWithButtonProps) => {
@@ -26,6 +27,23 @@ const Input = (props: InputProps | InputWithButtonProps) => {
                     <Button className={`${styles.button} ${props.buttonClassName}`} onClick={props.buttonOnClick}>
                          {props.buttonText} {props.buttonImage && <img src={props.buttonImage} alt="" />}
                     </Button>
+               </div>
+          );
+     }
+     if (props.label) {
+          return (
+               <div className={` ${styles.InputContainer_Label} ${props.containerClassName}`}>
+                    <Label className={styles.label}>{props.label}</Label>
+                    <input
+                         className={`${styles.Input} ${props.className}`}
+                         placeholder={props.placeholder}
+                         type={props.type}
+                         name={props.name}
+                         id={props.id}
+                         value={props.value || input}
+                         onChange={props.onChange || inputOnChangeHandler}
+                         onKeyDown={props.onKeyDown}
+                    />
                </div>
           );
      }

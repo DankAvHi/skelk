@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useProductsApi from "../../api/products/useProducts.api";
+import { EditProductRequest } from "../../shared/types/editProducts";
 import { ProductsSearchRequest, ProductsSearchResponse } from "../../shared/types/products";
 import textStyles from "../../styles/text.module.css";
 import Button from "../UI/Buttons/Button/Button";
@@ -7,7 +8,13 @@ import Input from "../UI/Inputs/Input/Input";
 import styles from "./Search.module.css";
 import searchImage from "/static/search.svg";
 
-const Search = () => {
+type SearchPropsType = {
+     isAdmin?: boolean;
+     selectButtonOnClickHandler: (product: EditProductRequest) => () => void;
+     deleteButtonOnClickHandler: () => {};
+};
+
+const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnClickHandler }: SearchPropsType) => {
      const { search, loading } = useProductsApi();
 
      const [products, setProducts] = useState<ProductsSearchResponse>([]);
@@ -79,7 +86,24 @@ const Search = () => {
                                         <span className={styles.searchResultText}>{searchResult.price}р.</span>
                                    </div>
                                    <div className={styles.searchResultProperty}>
-                                        <Button className={styles.SearchResultButton}>{"Купить"}</Button>
+                                        {isAdmin ? (
+                                             <>
+                                                  <Button
+                                                       onClick={selectButtonOnClickHandler(searchResult)}
+                                                       className={`${styles.SearchResultButton} ${styles.SearchResultButton_Admin}`}
+                                                  >
+                                                       {"Изменить"}
+                                                  </Button>
+                                                  <Button
+                                                       onClick={deleteButtonOnClickHandler}
+                                                       className={`${styles.SearchResultButton} ${styles.SearchResultButton_Admin}`}
+                                                  >
+                                                       {"Удалить"}
+                                                  </Button>
+                                             </>
+                                        ) : (
+                                             <Button className={styles.SearchResultButton}>{"Купить"}</Button>
+                                        )}
                                    </div>
                               </div>
                          ))}

@@ -1,4 +1,5 @@
-type InputProps = UIComponentProps & React.HTMLProps<HTMLInputElement> & { withButton: false };
+type InputProps = UIComponentProps &
+     React.HTMLProps<HTMLInputElement> & { withButton: false; containerClassName?: string };
 
 type InputWithButtonProps = UIComponentProps &
      React.HTMLProps<HTMLInputElement> & {

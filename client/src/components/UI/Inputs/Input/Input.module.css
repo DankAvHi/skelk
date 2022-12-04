@@ -39,6 +39,14 @@
      gap: 8px;
 }
 
+.InputContainer_Label {
+     width: 100%;
+
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+}
+
 @media screen and (max-width: 1024px) {
      .InputContainer {
           padding: 4px;

@@ -1,25 +1,31 @@
 import React, { useState } from "react";
 import { LoginRequest } from "../../../../../../src/shared/types/auth";
 import useAuthApi from "../../../../api/admin/useAuth.api";
+import useTopPopup from "../../../../components/TopPopup/TopPopup.hook";
 import Button from "../../../../components/UI/Buttons/Button/Button";
 import Input from "../../../../components/UI/Inputs/Input/Input";
 import { useAuth } from "../../../../hooks/auth.hook";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-     const { login: loginAPI } = useAuthApi();
+     const { login: loginAPI, error } = useAuthApi();
      const { login } = useAuth();
+     const { showTopPopup } = useTopPopup();
 
      const [form, setForm] = useState<LoginRequest>({ login: "", password: "" });
 
      const formOnSubmitHandler = async (event: React.FormEvent) => {
-          event.preventDefault();
+          try {
+               event.preventDefault();
 
-          const data = await loginAPI(form);
+               const data = await loginAPI(form);
 
-          if (data.succes) {
-               login();
-               window.location.reload();
+               if (data.succes) {
+                    login();
+                    window.location.reload();
+               }
+          } catch (e) {
+               showTopPopup({ message: { text: "Ошибка при входе", type: "error" } });
           }
      };
 
@@ -29,15 +35,24 @@ const LoginForm = () => {
 
      return (
           <form className={styles.LoginForm} onSubmit={formOnSubmitHandler}>
-               <Input name={"login"} value={form.login} onChange={inputOnChangeHandler} className={styles.input} />
                <Input
+                    label="Логин"
+                    placeholder="Логин"
+                    name={"login"}
+                    value={form.login}
+                    onChange={inputOnChangeHandler}
+                    className={styles.input}
+               />
+               <Input
+                    label="Пароль"
+                    placeholder="Пароль"
                     type="password"
                     name={"password"}
                     value={form.password}
                     onChange={inputOnChangeHandler}
                     className={styles.input}
                />
-               <Button>{"Войти"}</Button>
+               <Button className={styles.button}>{"Войти"}</Button>
           </form>
      );
 };

@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import requestServerError from "../../errors/requestServerError.error";
 
-const editProductsController: RequestHandler = async (req, res) => {
+const editProductController: RequestHandler = async (req, res) => {
      try {
           res.json({ succes: true });
      } catch (error) {
@@ -9,4 +9,4 @@ const editProductsController: RequestHandler = async (req, res) => {
      }
 };
 
-export default editProductsController;
+export default editProductController;

@@ -2,8 +2,14 @@
 @import url("./colors.css");
 :root {
      --app-background: url("../../static/background.jpg");
+     --app-background-color: var(--white-100);
      --app-font-size: 1em;
      --app-font-weight: 400;
      --app-font-family: var(--inter-font);
      --app-accient-color: var(--blue-100);
+
+     --toppopup-warning-background-color: var(--orange-90);
+     --toppopup-succeful-background-color: var(--green-90);
+     --toppopup-info-background-color: var(--app-accient-color);
+     --toppopup-danger-background-color: var(--red-90);
 }
