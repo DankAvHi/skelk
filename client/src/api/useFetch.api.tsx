@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 const useFetch = () => {
      const [loading, setLoading] = useState<boolean>(false);
-     const [error, setError] = useState<string | null>(null);
+     const [error, setError] = useState<Error | null>(null);
 
      const clearError = useCallback(() => {
           setError(null);
@@ -44,10 +44,10 @@ const useFetch = () => {
                     if (!res.ok) {
                          const error: Error & { info: any; status: number } = {
                               ...new Error("An error occurred while fetching the data."),
-                              info: await res.json(),
+                              info: await res.json().catch((err) => res.statusText),
                               status: res.status,
                          };
-
+                         setError(error);
                          throw error;
                     }
                     const data = await res.json();
@@ -56,7 +56,7 @@ const useFetch = () => {
                     return data;
                } catch (e: any) {
                     setLoading(false);
-                    setError(e.message);
+                    // setError(e);
                     throw e;
                }
           },

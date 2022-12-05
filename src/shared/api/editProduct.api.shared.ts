@@ -1,10 +1,10 @@
 import { API_ROUTE } from "./api.shared";
-export const EDIT_PRODUCTS_ROUTE = "/edit-products";
+export const EDIT_PRODUCTS_ROUTE = "/edit-product";
 
 export const EDIT_PRODUCT_ROUTE = "/edit";
 export const DELETE_PRODUCT_ROUTE = "/delete";
-export const IMPORT_TABLE_PRODUCTS_ROUTE = "/import-table";
+export const IMPORT_TABLE_PRODUCT_ROUTE = "/import-table";
 
 export const EDIT_PRODUCT_API = API_ROUTE + EDIT_PRODUCTS_ROUTE + EDIT_PRODUCT_ROUTE;
 export const DELETE_PRODUCT_API = API_ROUTE + EDIT_PRODUCTS_ROUTE + DELETE_PRODUCT_ROUTE;
-export const IMPORT_TABLE_PRODUCTS_API = API_ROUTE + EDIT_PRODUCTS_ROUTE + IMPORT_TABLE_PRODUCTS_ROUTE;
+export const IMPORT_TABLE_PRODUCT_API = API_ROUTE + EDIT_PRODUCTS_ROUTE + IMPORT_TABLE_PRODUCT_ROUTE;

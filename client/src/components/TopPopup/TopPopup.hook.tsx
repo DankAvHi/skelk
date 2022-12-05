@@ -6,7 +6,7 @@ export default function useTopPopup() {
      const { setAppTopPopupMesages, appTopPopupMesages } = useContext(AppContext);
 
      const showTopPopup = ({
-          message = { text: "", type: "warning", duration: 1500 },
+          message = { text: "", type: "warning", duration: 2500 },
           clearError = null,
      }: TopPopupHookProps) => {
           const isExisted = !!appTopPopupMesages.filter(
@@ -35,7 +35,7 @@ export default function useTopPopup() {
 
                     clearTimeout(messageTimeout);
                },
-               message.duration ? message.duration : 1500
+               message.duration ? message.duration : 2500
           );
      };
      return { showTopPopup };

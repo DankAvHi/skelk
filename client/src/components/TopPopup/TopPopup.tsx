@@ -5,7 +5,7 @@ import warnigImage from "./assets/images/warningIcon.png";
 import { TopPopupProps } from "./TopPopup.d";
 import styles from "./TopPopup.module.css";
 
-export default function TopPopup({ text, type = "warning", duration = 1500 }: TopPopupProps) {
+export default function TopPopup({ text, type = "warning", duration = 2500 }: TopPopupProps) {
      const popupTheme = {
           classes: "",
           imageSRC: "",

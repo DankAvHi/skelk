@@ -19,3 +19,9 @@
           font-size: 1rem;
      }
 }
+
+Button:disabled {
+     cursor: progress;
+
+     filter: grayscale(0.5);
+}

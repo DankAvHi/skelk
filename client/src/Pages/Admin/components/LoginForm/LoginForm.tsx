@@ -24,8 +24,16 @@ const LoginForm = () => {
                     login();
                     window.location.reload();
                }
-          } catch (e) {
-               showTopPopup({ message: { text: "Ошибка при входе", type: "error" } });
+          } catch (e: any) {
+               console.error(e);
+               showTopPopup({
+                    message: {
+                         text:
+                              String(e.status)[0] === "5"
+                                   ? "Ошибка при входе, сервер недоступен"
+                                   : "Ошибка при входе, неверные логин или пароль",
+                    },
+               });
           }
      };
 

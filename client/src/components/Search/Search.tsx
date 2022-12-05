@@ -1,24 +1,19 @@
 import React, { useState } from "react";
-import useProductsApi from "../../api/products/useProducts.api";
-import { EditProductRequest } from "../../shared/types/editProducts";
-import { ProductsSearchRequest, ProductsSearchResponse } from "../../shared/types/products";
+import useProductApi from "../../api/product/useProduct.api";
+import { ProductSearchRequest, ProductSearchResponse } from "../../shared/types/product";
 import textStyles from "../../styles/text.module.css";
+import useTopPopup from "../TopPopup/TopPopup.hook";
 import Button from "../UI/Buttons/Button/Button";
 import Input from "../UI/Inputs/Input/Input";
 import styles from "./Search.module.css";
 import searchImage from "/static/search.svg";
 
-type SearchPropsType = {
-     isAdmin?: boolean;
-     selectButtonOnClickHandler: (product: EditProductRequest) => () => void;
-     deleteButtonOnClickHandler: () => {};
-};
+const Search = () => {
+     const { search, loading } = useProductApi();
+     const { showTopPopup } = useTopPopup();
 
-const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnClickHandler }: SearchPropsType) => {
-     const { search, loading } = useProductsApi();
-
-     const [products, setProducts] = useState<ProductsSearchResponse>([]);
-     const [input, setInput] = useState<ProductsSearchRequest>({ partNumber: "" });
+     const [product, setProduct] = useState<ProductSearchResponse>([]);
+     const [input, setInput] = useState<ProductSearchRequest>({ partNumber: "" });
      const [isFirstSearch, setIsFirstSearch] = useState<boolean>(true);
 
      const inputOnChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,10 +21,15 @@ const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnCli
      };
 
      const searchButtonOnClickHandler = async () => {
-          const products = await search(input);
+          try {
+               const product = await search(input);
 
-          setProducts(products);
-          setIsFirstSearch(false);
+               setProduct(product);
+               setIsFirstSearch(false);
+          } catch (e) {
+               console.error(e);
+               showTopPopup({ message: { text: "Не удалось загрузить результаты", type: "error" } });
+          }
      };
 
      return (
@@ -46,7 +46,7 @@ const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnCli
 
                {isFirstSearch ? null : loading ? (
                     <p className={textStyles.silentText}>{"Загрузка..."}</p>
-               ) : products.length > 0 ? (
+               ) : product.length > 0 ? (
                     <section className={styles.searchResults}>
                          <div className={styles.searchTitle}>
                               <div className={styles.searchTitleProperty}>
@@ -68,8 +68,8 @@ const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnCli
                                    <span className={styles.searchTitlePropertyText}>{"Операция"}</span>
                               </div>
                          </div>
-                         {products.map((searchResult) => (
-                              <div key={searchResult.idproducts} className={styles.searchResult}>
+                         {product.map((searchResult) => (
+                              <div key={searchResult.idproduct} className={styles.searchResult}>
                                    <div className={styles.searchResultProperty}>
                                         <span className={styles.searchResultText}>{searchResult.partNumber}</span>
                                    </div>
@@ -86,24 +86,7 @@ const Search = ({ isAdmin = false, deleteButtonOnClickHandler, selectButtonOnCli
                                         <span className={styles.searchResultText}>{searchResult.price}р.</span>
                                    </div>
                                    <div className={styles.searchResultProperty}>
-                                        {isAdmin ? (
-                                             <>
-                                                  <Button
-                                                       onClick={selectButtonOnClickHandler(searchResult)}
-                                                       className={`${styles.SearchResultButton} ${styles.SearchResultButton_Admin}`}
-                                                  >
-                                                       {"Изменить"}
-                                                  </Button>
-                                                  <Button
-                                                       onClick={deleteButtonOnClickHandler}
-                                                       className={`${styles.SearchResultButton} ${styles.SearchResultButton_Admin}`}
-                                                  >
-                                                       {"Удалить"}
-                                                  </Button>
-                                             </>
-                                        ) : (
-                                             <Button className={styles.SearchResultButton}>{"Купить"}</Button>
-                                        )}
+                                        <Button className={styles.SearchResultButton}>{"Купить"}</Button>
                                    </div>
                               </div>
                          ))}
