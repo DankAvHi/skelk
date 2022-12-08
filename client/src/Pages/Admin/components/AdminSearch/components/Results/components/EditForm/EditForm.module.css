@@ -1,0 +1,29 @@
+.EditForm {
+     padding: 10px;
+
+     display: flex;
+     flex-direction: column;
+     gap: 24px;
+}
+
+.actions {
+     display: flex;
+     gap: 8px;
+     align-self: flex-end;
+}
+.action {
+     max-width: 240px;
+
+     align-self: flex-end;
+
+     font-size: 1rem;
+}
+.form {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 12px;
+}
+.input {
+     padding: 10px;
+     font-size: 0.8rem;
+}

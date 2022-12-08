@@ -1,0 +1,16 @@
+.ImageTextSection {
+     display: flex;
+     align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+     .ImageTextSection {
+          flex-direction: column;
+          align-items: center;
+     }
+}
+
+.image {
+     max-width: 320px;
+     width: 100%;
+}

@@ -1,4 +1,6 @@
 .Button {
+     transition: 0.2s;
+
      border-radius: 36px;
 
      padding: 12px;
@@ -24,4 +26,12 @@ Button:disabled {
      cursor: progress;
 
      filter: grayscale(0.5);
+}
+
+button:hover {
+     transform: scale(1.05);
+}
+
+button:active {
+     transform: scale(0.8);
 }

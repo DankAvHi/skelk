@@ -4,8 +4,8 @@
      "description": "Site for ordering electroinc components in russia from china",
      "main": "index.js",
      "scripts": {
-          "build": "",
-          "start": "",
+          "build": "npx webpack",
+          "start": "npm run build && node dist/index.js",
           "start-dev": "npx nodemon src/index.ts development",
           "db-pull": "npx prisma db pull && npx prisma generate"
      },
@@ -13,7 +13,7 @@
      "license": "ISC",
      "dependencies": {
           "@prisma/client": "^4.7.1",
-          "bcrypt": "^5.1.0",
+          "bcryptjs": "^2.4.3",
           "connect-sqlite3": "^0.9.13",
           "cookie-parser": "^1.4.6",
           "cors": "^2.8.5",
@@ -21,21 +21,29 @@
           "esbuild": "^0.15.16",
           "express": "^4.18.2",
           "express-session": "^1.17.3",
+          "multer": "^1.4.5-lts.1",
           "passport": "^0.6.0",
-          "passport-local": "^1.0.0"
+          "passport-local": "^1.0.0",
+          "webpack-node-externals": "^3.0.0",
+          "xlsx": "^0.18.5"
      },
      "devDependencies": {
           "@types/bcrypt": "^5.0.0",
+          "@types/bcryptjs": "^2.4.2",
           "@types/connect-sqlite3": "^0.9.1",
           "@types/cookie-parser": "^1.4.3",
           "@types/cors": "^2.8.12",
           "@types/express-session": "^1.17.5",
+          "@types/multer": "^1.4.7",
           "@types/node": "^18.11.10",
           "@types/passport": "^1.0.11",
           "@types/passport-local": "^1.0.34",
           "nodemon": "^2.0.20",
           "prisma": "^4.7.1",
+          "ts-loader": "^9.4.2",
           "ts-node": "^10.9.1",
-          "typescript": "^4.9.3"
+          "typescript": "^4.9.3",
+          "webpack": "^5.75.0",
+          "webpack-cli": "^5.0.1"
      }
 }

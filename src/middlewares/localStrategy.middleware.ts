@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import passport from "passport";
 import { Strategy } from "passport-local";
 import serverError from "../errors/strategy.error";
@@ -23,7 +23,7 @@ const LocalStrategy = () => {
                               return done(null, false, { message: "Login or password is incorrect" });
                          }
 
-                         const isMatch = await bcrypt.compare(password, user.password);
+                         const isMatch = await bcryptjs.compare(password, user.password);
 
                          if (isMatch) {
                               return done(null, user);

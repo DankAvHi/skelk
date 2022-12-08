@@ -7,7 +7,7 @@ import passport from "passport";
 import path from "path";
 import apiRouter from "./api/api";
 import launchApp from "./app/launchApp";
-import { CLIENT_INDEX_PATH, CLIENT_PATH, COOKIE_OPTIONS, SESSION_SECRET } from "./config/app.config";
+import { CLIENT_INDEX_PATH, CLIENT_PATH, COOKIE_OPTIONS, SESSION_SECRET, UPLOADS_PATH } from "./config/app.config";
 import corsConfig from "./config/cors.config";
 import LocalStrategy from "./middlewares/localStrategy.middleware";
 import { API_ROUTE } from "./shared/api/api.shared";
@@ -24,6 +24,7 @@ const store = new SQLiteStore({ table: "sessions", db: "sessions.db" });
 app.use(express.json());
 app.use(cors(corsConfig));
 app.use(express.static(path.resolve(CLIENT_PATH)));
+app.use(express.static(path.resolve(UPLOADS_PATH)));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
      expressSession({

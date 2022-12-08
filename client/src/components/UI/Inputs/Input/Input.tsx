@@ -16,6 +16,7 @@ const Input = (props: InputProps | InputWithButtonProps) => {
           return (
                <div className={`${styles.InputContainer} ${props.containerClassName}`}>
                     <input
+                         onKeyDown={props.onKeyDown}
                          className={`${styles.Input} ${styles.Input_withButton} ${props.className}`}
                          placeholder={props.placeholder}
                          type={props.type}

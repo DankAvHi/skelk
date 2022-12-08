@@ -1,8 +1,7 @@
 import { RequestHandler } from "express";
 import requestServerError from "../../errors/requestServerError.error";
-import { DeleteProductRequest } from "../../shared/types/editProduct";
+import { DeleteProductRequest, DeleteProductResponse } from "../../shared/types/editProduct";
 import { prisma } from "./../../services/connectToDatabase.service";
-import { BooleanResponse } from "./../../shared/types/api.response.d";
 
 const deleteProductController: RequestHandler = async (req, res) => {
      try {
@@ -10,7 +9,7 @@ const deleteProductController: RequestHandler = async (req, res) => {
 
           const product = await prisma.product.delete({ where: { idproduct: idproduct } });
 
-          const response: BooleanResponse = { succes: !!product };
+          const response: DeleteProductResponse = { succes: !!product };
 
           res.json(response);
      } catch (error) {
