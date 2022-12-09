@@ -11,7 +11,7 @@ const Modal = (props: ModalProps) => {
           if (props.isOpen) lockScroll();
 
           return () => unlockScroll();
-     }, [lockScroll, unlockScroll]);
+     }, [lockScroll, unlockScroll, props.isOpen]);
 
      const stopPropagation = (event: React.MouseEvent<HTMLDivElement>) => {
           event.stopPropagation();
