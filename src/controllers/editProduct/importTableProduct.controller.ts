@@ -1,13 +1,18 @@
+import { product } from "@prisma/client";
 import { RequestHandler } from "express";
 import fs from "fs";
 import { readFile, utils } from "xlsx";
 import requestServerError from "../../errors/requestServerError.error";
+import { prisma } from "../../services/connectToDatabase.service";
 import { ImportTableProductResponse } from "../../shared/types/editProduct";
 
-type RawProduct = {
-     partNumber: string;
-     manufacturer: string;
-     description: string;
+type rawProduct = product & {
+     ["Парт номер"]?: string;
+     ["Производитель"]?: string;
+     ["Описание"]?: string;
+     ["Срок"]?: string;
+     ["Цена"]?: string;
+     [key: string]: any;
 };
 
 const importTableProductController: RequestHandler = async (req, res) => {
@@ -20,19 +25,41 @@ const importTableProductController: RequestHandler = async (req, res) => {
 
           const workBox = await readFile(file.path);
 
-          const rawProducts: RawProduct[] = utils
-               .sheet_to_json(workBox.Sheets[workBox.SheetNames[0]], {})
-               .map((rawProduct: any) => {
-                    rawProduct.partNumber = rawProduct["Парт номер"]!;
-                    rawProduct.manufacturer = rawProduct["Производитель"]!;
-                    rawProduct.description = rawProduct["Описание"]!;
+          const products: product[] = utils
+               .sheet_to_json<rawProduct>(workBox.Sheets[workBox.SheetNames[0]], {})
+               .map((product) => {
+                    product.partNumber = product["Парт номер"]!;
+                    product.manufacturer = product["Производитель"]!;
+                    product.description = product["Описание"]!;
+                    product.deliveryDate = product["Срок"]!;
+                    product.price = product["Цена"]!;
 
-                    delete rawProduct["Парт номер"];
-                    delete rawProduct["Производитель"];
-                    delete rawProduct["Описание"];
-                    return rawProduct;
+                    delete product["Парт номер"];
+                    delete product["Производитель"];
+                    delete product["Описание"];
+                    delete product["Срок"];
+                    delete product["Цена"];
+                    Object.keys(product).forEach((property) => product[property] && product[property].trim());
+                    return product;
                });
-          console.log(rawProducts);
+
+          for (let index = 0; index < products.length; index++) {
+               const isUnique = !!!(await prisma.product.findFirst({
+                    where: { partNumber: products[index].partNumber },
+               }));
+
+               if (isUnique) {
+                    await prisma.product.create({
+                         data: products[index],
+                    });
+               } else {
+                    await prisma.product.updateMany({
+                         where: { partNumber: products[index].partNumber },
+                         data: products[index],
+                    });
+               }
+          }
+
           fs.unlink(file.path, (err: any) => {});
 
           const response: ImportTableProductResponse = { succes: true };

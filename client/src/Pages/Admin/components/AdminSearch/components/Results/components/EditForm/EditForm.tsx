@@ -55,6 +55,7 @@ const EditForm = (props: EditFormProps) => {
                          placeholder={"Цена"}
                          className={styles.input}
                          value={props.form.price || ""}
+                         type={"text"}
                          name={"price"}
                          onChange={props.inputFormOnChangeHandler}
                     />

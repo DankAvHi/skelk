@@ -24,6 +24,9 @@ const Search = () => {
 
      const searchButtonOnClickHandler = async () => {
           try {
+               if (!input.partNumber.trim() || input.partNumber.trim().length < 3) {
+                    return showTopPopup({ message: { text: "Введите для поиска минимум 3 символа", type: "info" } });
+               }
                const products = await search(input);
 
                setProducts(products);

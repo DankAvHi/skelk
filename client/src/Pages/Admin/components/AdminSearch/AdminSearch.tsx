@@ -62,17 +62,17 @@ const AdminSearch = () => {
      const inputFormOnChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
           setForm((prev) => ({
                ...prev,
-               [event.target.name]: event.target.name === "price" ? Number(event.target.value) : event.target.value,
+               [event.target.name]: event.target.value,
           }));
      };
 
      const searchProducts = async () => {
           try {
-               if (!input) {
-                    return showTopPopup({ message: { text: "Введите запрос", type: "info" } });
+               if (!input.partNumber.trim() || input.partNumber.trim().length < 3) {
+                    return showTopPopup({ message: { text: "Введите для поиска минимум 3 символа", type: "info" } });
                }
                const products = await search(input);
-
+               console.log(products);
                setProduct(products);
                setIsFirstSearch(false);
           } catch (e) {
@@ -109,6 +109,7 @@ const AdminSearch = () => {
 
                setSelectedProduct(null);
                setForm(initialForm);
+               searchProducts();
           } catch (e) {
                showTopPopup({ message: { text: "Не удалось сохранить", type: "error" } });
           }

@@ -1,5 +1,5 @@
-import qrImage from "../../../public/static/QR_code.png";
 import expandMoreImage from "../../assets/expandMore.svg";
+import qrImage from "../../assets/QR_code.png";
 import { ImageTextSection } from "../../components/UI/Sections/ImageTextSection/ImageTextSection";
 import globalStyles from "../../styles/global.module.css";
 import Header from "./components/Header/Header";
