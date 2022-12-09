@@ -12,4 +12,6 @@
      --toppopup-succeful-background-color: var(--green-90);
      --toppopup-info-background-color: var(--app-accient-color);
      --toppopup-danger-background-color: var(--red-90);
+
+     --modal-background-color: var(--white-100-trans);
 }

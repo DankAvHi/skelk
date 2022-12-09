@@ -34,7 +34,7 @@ const Input = (props: InputProps | InputWithButtonProps) => {
      if (props.label) {
           return (
                <div className={` ${styles.InputContainer_Label} ${props.containerClassName}`}>
-                    <Label className={styles.label}>{props.label}</Label>
+                    <Label className={`${styles.label} ${props.classNameLabel}`}>{props.label}</Label>
                     <input
                          className={`${styles.Input} ${props.className}`}
                          placeholder={props.placeholder}

@@ -17,16 +17,35 @@ const Modal = (props: ModalProps) => {
           event.stopPropagation();
      };
 
-     return (
-          <div className={styles.Modal} onClick={props.closeFunction}>
-               <div className={styles.border} onClick={stopPropagation}>
-                    <button className={styles.closeButton} onClick={props.closeFunction}>
-                         <img className={styles.closeImage} src={closeImage} alt="" />
-                    </button>
+     const close = () => {
+          props.setIsOpen(false);
+     };
+
+     if (props.isOpen)
+          return (
+               <div className={`${styles.Modal} ${props.classNameBackground}`} onClick={props.closeFunction || close}>
+                    <div className={`${styles.border} ${props.classNameBorder}`} onClick={stopPropagation}>
+                         <button
+                              className={`${styles.closeButton} ${props.classNameButton}`}
+                              onClick={props.closeFunction || close}
+                         >
+                              <img
+                                   className={`${styles.closeImage} ${props.classNameCloseImage}`}
+                                   src={closeImage}
+                                   alt=""
+                              />
+                         </button>
+                    </div>
+                    <div
+                         className={`${styles.childrenContainer} ${props.classNameChildrenContainer}`}
+                         onClick={stopPropagation}
+                    >
+                         {props.children}
+                    </div>
                </div>
-               {props.children}
-          </div>
-     );
+          );
+
+     return null;
 };
 
 export default Modal;

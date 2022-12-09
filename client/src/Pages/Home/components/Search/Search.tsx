@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useProductApi from "../../../../api/product/useProduct.api";
-import Modal from "../../../../components/Modals/Modal/Modal";
 import useTopPopup from "../../../../components/TopPopup/TopPopup.hook";
 import Input from "../../../../components/UI/Inputs/Input/Input";
 import { ProductSearchRequest, ProductSearchResponse } from "../../../../shared/types/product";
@@ -16,7 +15,6 @@ const Search = () => {
      const [products, setProducts] = useState<ProductSearchResponse>([]);
      const [input, setInput] = useState<ProductSearchRequest>({ partNumber: "" });
      const [isFirstSearch, setIsFirstSearch] = useState<boolean>(true);
-     const [isOrderModalOpen, setIsOrderModalOpen] = useState<boolean>(false);
 
      const inputOnChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
           setInput({ partNumber: event.target.value });
@@ -56,7 +54,6 @@ const Search = () => {
                ) : (
                     <p className={textStyles.silentText}>{"По вашему запросу ничего не найдено"}</p>
                )}
-               {isOrderModalOpen && <Modal closeFunction={() => setIsOrderModalOpen(false)}></Modal>}
           </div>
      );
 };
