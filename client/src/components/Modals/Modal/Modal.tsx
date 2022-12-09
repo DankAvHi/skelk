@@ -8,7 +8,7 @@ const Modal = (props: ModalProps) => {
      const { lockScroll, unlockScroll } = useScrollLock();
 
      useEffect(() => {
-          lockScroll();
+          if (props.isOpen) lockScroll();
 
           return () => unlockScroll();
      }, [lockScroll, unlockScroll]);
