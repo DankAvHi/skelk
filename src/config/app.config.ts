@@ -22,7 +22,7 @@ export const {
      REFRESH_TOKEN_EXPIRY = "60 * 60 * 24 * 30 * 1000",
 } = process.env;
 
-export const SECURE = process.argv[3] === "secure" || process.env.SECURE == "secure";
+export const SECURE = process.argv[3] === "secure" || process.env.SECURE == "true";
 export const UPLOADS_PATH = path.resolve(process.cwd(), "uploads");
 export const CLIENT_PATH = path.resolve(process.cwd(), "client", "dist");
 export const CLIENT_INDEX_PATH = path.resolve(CLIENT_PATH, "index.html");
