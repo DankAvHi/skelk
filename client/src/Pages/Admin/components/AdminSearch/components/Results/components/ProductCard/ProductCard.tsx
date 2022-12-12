@@ -5,7 +5,7 @@ import { productSearchProperties } from "../../../../AdminSearch.data";
 import styles from "./ProductCard.module.css";
 
 type ProductCardProps = {
-     searchResult: product & { [key: string]: string };
+     searchResult: product & { [key: string]: string | number | null };
      deleteButtonOnClickHandler: (idproduct: number) => () => Promise<void>;
      selectButtonOnClickHandler: (product: EditProductRequest) => () => void;
 };
