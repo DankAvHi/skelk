@@ -8,3 +8,4 @@ server.txt
 .rest
 uploads/*
 *.sql
+dist

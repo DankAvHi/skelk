@@ -9,12 +9,12 @@ const useAuthApi = () => {
      const login = useCallback(
           async (req: LoginRequest): LoginResponseClient =>
                await fetcher({ url: LOGIN_API, body: req, method: "POST" }),
-          []
+          [fetcher]
      );
-     const verify = useCallback(async (): VerifyResponseClient => await fetcher({ url: VERIFY_API }), []);
+     const verify = useCallback(async (): VerifyResponseClient => await fetcher({ url: VERIFY_API }), [fetcher]);
      const logout = useCallback(
           async (): LogoutResponseClient => await fetcher({ url: LOGOUT_API, method: "DELETE" }),
-          []
+          [fetcher]
      );
 
      return { login, verify, logout, loading, error };

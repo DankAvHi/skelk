@@ -8,7 +8,9 @@ type AppContextType = {
 
 const initialState: AppContextType = {
      appTopPopupMesages: [],
-     setAppTopPopupMesages: () => {},
+     setAppTopPopupMesages: () => {
+          return null;
+     },
 };
 const AppContext = createContext(initialState);
 export default AppContext;

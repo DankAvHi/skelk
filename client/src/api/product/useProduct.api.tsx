@@ -13,12 +13,12 @@ const useProductApi = () => {
      const search = useCallback(
           async (req: ProductSearchRequest): ProductSearchResponseClient =>
                await fetcher({ url: SEARCH_PRODUCT_API, body: req, method: "POST" }),
-          []
+          [fetcher]
      );
      const order = useCallback(
           async (req: ProductOrderRequest): ProductOrderResponseClient =>
                await fetcher({ url: ORDER_PRODUCT_API, body: req, method: "POST" }),
-          []
+          [fetcher]
      );
 
      return { search, loading, order, error };

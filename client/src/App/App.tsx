@@ -3,6 +3,7 @@ import TopPopup from "../components/TopPopup/TopPopup";
 import { TopPopupArray } from "../components/TopPopup/TopPopup.d";
 import AppContext from "./App.context";
 import useAppRoutes from "./App.routes";
+
 function App() {
      const routes = useAppRoutes();
      const [appTopPopupMesages, setAppTopPopupMesages] = useState<TopPopupArray>([]);

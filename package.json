@@ -9,7 +9,8 @@
           "build": "npm run build-client; npm run build-server",
           "start": "npm run build && node dist/index.js",
           "start-dev": "npx nodemon src/index.ts development",
-          "db-pull": "npx prisma db pull && npx prisma generate"
+          "db-pull": "npx prisma db pull && npx prisma generate",
+          "lint": "eslint src"
      },
      "author": "dankAvHi",
      "license": "ISC",
@@ -40,6 +41,9 @@
           "@types/node": "^18.11.10",
           "@types/passport": "^1.0.11",
           "@types/passport-local": "^1.0.34",
+          "@typescript-eslint/eslint-plugin": "^5.46.0",
+          "@typescript-eslint/parser": "^5.46.0",
+          "eslint": "^8.29.0",
           "nodemon": "^2.0.20",
           "prisma": "^4.7.1",
           "ts-loader": "^9.4.2",

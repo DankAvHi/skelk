@@ -9,11 +9,11 @@ import styles from "./BuyModal.module.css";
 
 type BuyModalForm = {
      email: string;
-     [key: string]: any;
+     [key: string]: string;
 };
 
 const BuyModal = (props: ModalCustomProps & { partNumber: string }) => {
-     const { order, error } = useProductApi();
+     const { order } = useProductApi();
      const { showTopPopup } = useTopPopup();
 
      const [form, setForm] = useState<BuyModalForm>({ email: "" });

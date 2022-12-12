@@ -8,7 +8,7 @@ import { useAuth } from "../../../../hooks/auth.hook";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-     const { login: loginAPI, error } = useAuthApi();
+     const { login: loginAPI } = useAuthApi();
      const { login } = useAuth();
      const { showTopPopup } = useTopPopup();
 
@@ -24,12 +24,12 @@ const LoginForm = () => {
                     login();
                     window.location.reload();
                }
-          } catch (e: any) {
+          } catch (e: unknown) {
                console.error(e);
                showTopPopup({
                     message: {
                          text:
-                              String(e.status)[0] === "5"
+                              String((e as { status: string }).status)[0] === "5"
                                    ? "Ошибка при входе, сервер недоступен"
                                    : "Ошибка при входе, неверные логин или пароль",
                     },

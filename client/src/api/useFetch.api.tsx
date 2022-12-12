@@ -15,7 +15,7 @@ const useFetch = () => {
      }, [error, clearError]);
 
      const fetcher = useCallback(
-          async <JSON = any,>({
+          async <JSON = unknown,>({
                url,
                body,
                method = "GET",
@@ -23,7 +23,7 @@ const useFetch = () => {
                options = {},
           }: {
                url: RequestInfo;
-               body?: BodyInit | null | undefined | FormData | any;
+               body?: BodyInit | null | undefined | FormData | unknown;
                method?: RequestInit["method"];
                isJson?: boolean;
                options?: RequestInit;
@@ -35,14 +35,14 @@ const useFetch = () => {
                          options.body = JSON.stringify(body);
                          options.headers = new Headers(options.headers);
                          options.headers.set("Content-Type", "application/json");
-                    } else if (isCanHaveBody) options.body = body;
+                    } else if (isCanHaveBody) options.body = body as BodyInit;
 
                     options.method = method;
 
                     const res = await fetch(url, options);
 
                     if (!res.ok) {
-                         const error: Error & { info: any; status: number } = {
+                         const error: Error & { info: string; status: number } = {
                               ...new Error("An error occurred while fetching the data."),
                               info: await res.json().catch((err) => res.statusText),
                               status: res.status,
@@ -54,7 +54,7 @@ const useFetch = () => {
                     setLoading(false);
 
                     return data;
-               } catch (e: any) {
+               } catch (e) {
                     setLoading(false);
                     // setError(e);
                     throw e;

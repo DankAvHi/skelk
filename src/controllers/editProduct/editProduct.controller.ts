@@ -11,7 +11,7 @@ const editProductController: RequestHandler = async (req, res) => {
           let response: EditProductResponse;
 
           if (!product.idproduct) {
-               let productWithoutId: PartialBy<product, "idproduct"> = { ...product };
+               const productWithoutId: PartialBy<product, "idproduct"> = { ...product };
                delete productWithoutId.idproduct;
                const newProduct = await prisma.product.create({ data: productWithoutId });
 

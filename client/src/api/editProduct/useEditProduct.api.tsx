@@ -19,13 +19,13 @@ const useEditProductApi = () => {
      const edit = useCallback(
           async (req: EditProductRequest): EditProductResponseClient =>
                await fetcher({ url: EDIT_PRODUCT_API, body: req, method: "POST" }),
-          []
+          [fetcher]
      );
 
      const deleteProduct = useCallback(
           async (req: DeleteProductRequest): DeleteProductResponseClient =>
                await fetcher({ url: DELETE_PRODUCT_API, body: req, method: "DELETE" }),
-          []
+          [fetcher]
      );
 
      const importProductsFromTableFile = useCallback(
@@ -36,7 +36,7 @@ const useEditProductApi = () => {
                     method: "POST",
                     isJson: false,
                }),
-          []
+          [fetcher]
      );
 
      return { edit, deleteProduct, loading, error, importProductsFromTableFile };

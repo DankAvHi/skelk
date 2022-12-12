@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import requestServerError from "../../errors/requestServerError.error";
 
-const verifyController: RequestHandler = async (req, res, next) => {
+const verifyController: RequestHandler = async (req, res) => {
      try {
           if (req.isAuthenticated()) {
                return res.json({ succes: true });

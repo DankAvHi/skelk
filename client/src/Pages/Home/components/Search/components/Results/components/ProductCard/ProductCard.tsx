@@ -6,7 +6,7 @@ import { productSearchProperties } from "../../../../Search.data";
 import styles from "./ProductCard.module.css";
 
 type ProductCardProps = {
-     searchResult: product & { [key: string]: any };
+     searchResult: product & { [key: string]: string };
 };
 
 const ProductCard = (props: ProductCardProps) => {

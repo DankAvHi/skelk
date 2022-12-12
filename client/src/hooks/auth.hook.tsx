@@ -25,8 +25,8 @@ export const useAuth = () => {
                          logout();
                          return false;
                     }
-               } catch (e: any) {
-                    console.error(e.info.error);
+               } catch (e) {
+                    console.error((e as { info: { error: string } }).info.error);
                     logout();
                }
           };

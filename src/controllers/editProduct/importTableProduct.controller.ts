@@ -7,12 +7,12 @@ import { prisma } from "../../services/connectToDatabase.service";
 import { ImportTableProductResponse } from "../../shared/types/editProduct";
 
 type rawProduct = product & {
-     ["Парт номер"]?: string;
-     ["Производитель"]?: string;
-     ["Описание"]?: string;
-     ["Срок"]?: string;
-     ["Цена"]?: string;
-     [key: string]: any;
+     "Парт номер"?: string;
+     Производитель?: string;
+     Описание?: string;
+     Срок?: string;
+     Цена?: string;
+     [key: string]: string | undefined;
 };
 
 const importTableProductController: RequestHandler = async (req, res) => {
@@ -28,23 +28,23 @@ const importTableProductController: RequestHandler = async (req, res) => {
           const products: product[] = utils
                .sheet_to_json<rawProduct>(workBox.Sheets[workBox.SheetNames[0]], {})
                .map((product) => {
-                    product.partNumber = product["Парт номер"]!;
-                    product.manufacturer = product["Производитель"]!;
-                    product.description = product["Описание"]!;
-                    product.deliveryDate = product["Срок"]!;
-                    product.price = product["Цена"]!;
+                    product.partNumber = product["Парт номер"] ?? "";
+                    product.manufacturer = product["Производитель"] ?? "";
+                    product.description = product["Описание"] ?? "";
+                    product.deliveryDate = product["Срок"] ?? "";
+                    product.price = product["Цена"] ?? "";
 
                     delete product["Парт номер"];
                     delete product["Производитель"];
                     delete product["Описание"];
                     delete product["Срок"];
                     delete product["Цена"];
-                    Object.keys(product).forEach((property) => product[property] && product[property].trim());
+                    Object.keys(product).forEach((property) => product[property] && product[property]?.trim());
                     return product;
                });
 
           for (let index = 0; index < products.length; index++) {
-               const isUnique = !!!(await prisma.product.findFirst({
+               const isUnique = !(await prisma.product.findFirst({
                     where: { partNumber: products[index].partNumber },
                }));
 
@@ -60,7 +60,9 @@ const importTableProductController: RequestHandler = async (req, res) => {
                }
           }
 
-          fs.unlink(file.path, (err: any) => {});
+          fs.unlink(file.path, (err) => {
+               console.error(`${err}`);
+          });
 
           const response: ImportTableProductResponse = { succes: true };
           res.json(response);

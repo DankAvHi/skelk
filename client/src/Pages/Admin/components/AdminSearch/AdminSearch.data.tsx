@@ -5,7 +5,7 @@ export type ProductSearchProperties = {
      deliveryDate: string;
      price: string;
      operation: string;
-     [key: string]: any;
+     [key: string]: string;
 };
 
 export const productSearchProperties: ProductSearchProperties = {

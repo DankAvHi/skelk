@@ -27,7 +27,8 @@ input[type="submit"] {
      cursor: pointer;
 }
 
-img {
+img,
+svg {
      user-drag: none;
      -webkit-user-drag: none;
      user-select: none;

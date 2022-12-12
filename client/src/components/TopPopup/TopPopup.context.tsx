@@ -8,7 +8,9 @@ type TopPopupContextType = {
 
 const initialContext: TopPopupContextType = {
      appTopPopupMesages: [],
-     setAppTopPopupMesages: () => {},
+     setAppTopPopupMesages: () => {
+          return null;
+     },
 };
 
 const TopPopupContext = createContext<TopPopupContextType>(initialContext);

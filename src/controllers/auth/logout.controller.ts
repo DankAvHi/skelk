@@ -1,11 +1,11 @@
 import { RequestHandler } from "express";
 import requestServerError from "../../errors/requestServerError.error";
 
-const logoutController: RequestHandler = async (req, res, next) => {
+const logoutController: RequestHandler = async (req, res) => {
      try {
-          req.logout((err) => {
+          req.logout(() => {
                res.clearCookie("connect.sid");
-               req.session.destroy((err) => {
+               req.session.destroy(() => {
                     res.json({ succes: true });
                });
           });

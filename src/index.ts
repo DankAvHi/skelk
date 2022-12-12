@@ -2,7 +2,7 @@ import ConnectSQLite3 from "connect-sqlite3";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import expressSession from "express-session";
+import expressSession, { Store } from "express-session";
 import passport from "passport";
 import path from "path";
 import apiRouter from "./api/api";
@@ -33,8 +33,8 @@ app.use(
           rolling: true,
           saveUninitialized: false,
           cookie: COOKIE_OPTIONS,
-          //@ts-ignore
-          store: store,
+
+          store: store as Store,
      })
 );
 
