@@ -8,6 +8,14 @@
      gap: 124px;
 }
 
+@media screen and (max-width: 425px) {
+     .Header {
+          margin-bottom: 64px;
+
+          gap: 64px;
+     }
+}
+
 .info {
      border-radius: 0 0 36px 36px;
 
@@ -22,37 +30,25 @@
      gap: 24px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
      .info {
-          flex-direction: column;
-          align-items: flex-start;
           gap: 12px;
      }
 }
 
-.infoBlock {
-     border-right: 1px solid var(--white-100);
-
-     padding-right: 8px;
-
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     gap: 8px;
-}
-
 @media screen and (max-width: 768px) {
-     .infoBlock {
-          border-right: none;
-
-          padding-right: 0;
+     .info {
+          flex-wrap: wrap;
+          gap: 18px;
      }
 }
 
 .infoLine {
      display: flex;
-     align-items: center;
-     gap: 12px;
+     align-items: flex-end;
+     gap: 4px;
+
+     line-height: 1;
 }
 
 .infoTitle,
@@ -61,15 +57,19 @@
      font-weight: 500;
 }
 
+.infoTitle {
+     font-size: 0.8rem;
+}
+
 .infoText {
      font-size: 1rem;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 1024px) {
      .infoTitle {
           font-size: 0.6rem;
      }
      .infoText {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
      }
 }
 

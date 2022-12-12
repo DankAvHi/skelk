@@ -3,7 +3,7 @@
      border: 2px solid var(--app-accient-color);
      border-radius: 100px;
 
-     padding: 10px;
+     padding: 8px;
      padding-left: 32px;
 
      width: 100%;
@@ -20,12 +20,24 @@
      }
 }
 
+@media screen and (max-width: 425px) {
+     .Input {
+          padding: 4px;
+     }
+}
+
 .Input_withButton {
      border: none;
      border-radius: unset;
 
-     padding: 20px 0;
+     padding: 12px 0;
      padding-left: 32px;
+}
+
+@media screen and (max-width: 425px) {
+     .Input_withButton {
+          padding: 4px;
+     }
 }
 
 .InputContainer {

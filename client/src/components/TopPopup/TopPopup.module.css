@@ -6,6 +6,7 @@
      transform: translate(-50%, 0);
 
      border-radius: 15px;
+     border: 2px solid var(--black-00);
 
      padding: 20px;
 
