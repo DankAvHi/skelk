@@ -1,17 +1,13 @@
 .Header {
-     margin-bottom: 100px;
-
      display: flex;
      align-items: center;
      justify-content: center;
      flex-direction: column;
-     gap: 124px;
+     gap: 84px;
 }
 
 @media screen and (max-width: 425px) {
      .Header {
-          margin-bottom: 64px;
-
           gap: 64px;
      }
 }
@@ -19,14 +15,14 @@
 .info {
      border-radius: 0 0 36px 36px;
 
-     padding: 24px;
+     padding: 16px;
 
      width: 100%;
 
      background-color: var(--app-accient-color);
 
      display: flex;
-     align-items: baseline;
+     align-items: center;
      justify-content: center;
      gap: 14px;
 }
@@ -41,6 +37,21 @@
      .info {
           flex-wrap: wrap;
           gap: 18px;
+     }
+}
+
+.infoBlock {
+     padding-right: 8px;
+
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 8px;
+}
+
+@media screen and (max-width: 768px) {
+     .infoBlock {
+          padding-right: 0;
      }
 }
 
@@ -81,7 +92,10 @@
 }
 
 .logo {
-     max-width: 100%;
+     padding: 48px 0;
+
+     max-width: 480px;
+     width: 100%;
 }
 
 .heading {

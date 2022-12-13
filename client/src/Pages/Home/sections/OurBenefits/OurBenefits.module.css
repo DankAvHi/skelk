@@ -14,9 +14,21 @@
 }
 
 .heading {
-     font-size: 2.105rem;
+     font-size: 2.5rem;
      font-weight: 600;
      text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+     .heading {
+          font-size: 2rem;
+     }
+}
+
+@media screen and (max-width: 425px) {
+     .heading {
+          font-size: 1.5rem;
+     }
 }
 
 .benefits {
@@ -70,5 +82,5 @@
      background-color: var(--white-100);
 
      text-align: center;
-     font-size: 1.18rem;
+     font-size: 1rem;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useProductApi from "../../../../api/product/useProduct.api";
 import useTopPopup from "../../../../components/TopPopup/TopPopup.hook";
 import Input from "../../../../components/UI/Inputs/Input/Input";
@@ -9,12 +9,27 @@ import styles from "./Search.module.css";
 import searchImage from "/static/search.svg";
 
 const Search = () => {
-     const { search, loading } = useProductApi();
+     const { search, loading, searchRandom } = useProductApi();
      const { showTopPopup } = useTopPopup();
 
      const [products, setProducts] = useState<ProductSearchResponse>([]);
      const [input, setInput] = useState<ProductSearchRequest>({ partNumber: "" });
      const [isFirstSearch, setIsFirstSearch] = useState<boolean>(true);
+
+     useEffect(() => {
+          if (isFirstSearch) {
+               const loadRandomProducts = async () => {
+                    try {
+                         await searchRandom().then((data) => setProducts(data));
+                    } catch (e) {
+                         console.error(e);
+                         showTopPopup({ message: { text: "Не удалось загрузить товары", type: "error" } });
+                    }
+               };
+
+               loadRandomProducts();
+          }
+     }, [isFirstSearch, searchRandom]);
 
      const inputOnChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
           setInput({ partNumber: event.target.value });
@@ -40,6 +55,8 @@ const Search = () => {
                <p className={textStyles.silentText}>{"Введитие парт. номер нужной детали:"}</p>
                <Input
                     value={input.partNumber}
+                    className={styles.input}
+                    containerClassName={styles.inputContainer}
                     onChange={inputOnChangeHandler}
                     placeholder={"Парт. №"}
                     withButton={true}
@@ -47,7 +64,7 @@ const Search = () => {
                     buttonOnClick={searchButtonOnClickHandler}
                />
 
-               {isFirstSearch ? null : loading ? (
+               {loading ? (
                     <p className={textStyles.silentText}>{"Загрузка..."}</p>
                ) : products.length > 0 ? (
                     <Results searchResults={products} />

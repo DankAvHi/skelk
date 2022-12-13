@@ -9,6 +9,10 @@
      gap: 10px;
 }
 
+.inputContainer {
+     max-width: 768px;
+}
+
 @media screen and (max-width: 1024px) {
      .input {
           font-size: 0.8rem;

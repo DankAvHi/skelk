@@ -5,9 +5,9 @@
      justify-content: center;
 }
 .container {
-     padding: 12px;
+     padding: 16px;
 
-     max-width: 1280px;
+     max-width: 1024px;
      width: 100%;
 
      display: flex;

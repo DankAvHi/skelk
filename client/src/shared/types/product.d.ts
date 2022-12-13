@@ -8,3 +8,7 @@ export type ProductSearchResponseClient = Promise<ProductSearchResponse>;
 export type ProductOrderRequest = { partNumber: string };
 export type ProductOrderResponse = BooleanResponse;
 export type ProductOrderResponseClient = BooleanResponseClient;
+
+export type ProductRandomRequest = void;
+export type ProductRandomResponse = product[];
+export type ProductRandomResponseClient = Promise<ProductRandomResponse>;
