@@ -34,7 +34,7 @@ const Header = () => {
                               </div>
                          </div>
                          <Button onClick={orderBackCallButtonOnClickHandler} className={styles.button}>
-                              {"Заказать звонок"}
+                              {"Заказать обратный звонок"}
                          </Button>
                     </div>
 
