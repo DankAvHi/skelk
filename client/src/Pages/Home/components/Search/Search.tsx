@@ -28,8 +28,9 @@ const Search = () => {
                };
 
                loadRandomProducts();
+               setIsFirstSearch(false);
           }
-     }, [isFirstSearch, searchRandom]);
+     }, [isFirstSearch, searchRandom, showTopPopup]);
 
      const inputOnChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
           setInput({ partNumber: event.target.value });

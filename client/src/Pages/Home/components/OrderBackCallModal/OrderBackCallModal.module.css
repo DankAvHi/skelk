@@ -1,0 +1,47 @@
+.OrderBackCallModal {
+     border: 1px solid var(--app-accient-color);
+     border-radius: 0 0 12px 12px;
+
+     padding: 24px;
+
+     max-width: 640px;
+     width: 100%;
+
+     background-color: var(--white-100);
+
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+}
+
+.border {
+     border-radius: 12px 12px 0 0;
+     border: 1px solid var(--app-accient-color);
+     border-bottom: none;
+
+     max-width: 640px;
+}
+
+.heading {
+     font-size: 1.75rem;
+     font-weight: 600;
+}
+
+.description {
+     padding-bottom: 24px;
+}
+
+.label {
+     font-weight: 500;
+}
+
+.form {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     gap: 12px;
+}
+
+.input {
+     padding: 10px;
+}

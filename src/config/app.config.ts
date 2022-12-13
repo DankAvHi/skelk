@@ -20,6 +20,8 @@ export const {
      SESSION_SECRET,
      SESSION_EXPIRY,
      REFRESH_TOKEN_EXPIRY = "60 * 60 * 24 * 30 * 1000",
+     EMAIL_ADDRES,
+     EMAIL_PASSWORD,
 } = process.env;
 
 export const SECURE = process.argv[3] === "secure" || process.env.SECURE == "true";

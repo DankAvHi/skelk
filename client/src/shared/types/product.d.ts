@@ -5,7 +5,7 @@ export type ProductSearchRequest = { partNumber: string };
 export type ProductSearchResponse = product[];
 export type ProductSearchResponseClient = Promise<ProductSearchResponse>;
 
-export type ProductOrderRequest = { partNumber: string };
+export type ProductOrderRequest = { partNumber: string; email: string };
 export type ProductOrderResponse = BooleanResponse;
 export type ProductOrderResponseClient = BooleanResponseClient;
 

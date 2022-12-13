@@ -28,7 +28,7 @@ const BuyModal = (props: ModalCustomProps & { partNumber: string }) => {
                const isFormFilled = Object.keys(form).filter((field) => form[field].length > 0).length > 0;
                if (!isFormFilled) return showTopPopup({ message: { text: "Заполните все поля", type: "info" } });
 
-               const data = await order({ partNumber: props.partNumber });
+               const data = await order({ partNumber: props.partNumber, email: form.email });
 
                if (data.succes) {
                     showTopPopup({ message: { text: "Успешно отправленно", type: "succes" } });
