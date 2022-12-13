@@ -26,8 +26,9 @@
      background-color: var(--app-accient-color);
 
      display: flex;
-     align-items: center;
-     gap: 24px;
+     align-items: baseline;
+     justify-content: center;
+     gap: 14px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -45,7 +46,7 @@
 
 .infoLine {
      display: flex;
-     align-items: flex-end;
+     align-items: baseline;
      gap: 4px;
 
      line-height: 1;
@@ -58,7 +59,7 @@
 }
 
 .infoTitle {
-     font-size: 0.8rem;
+     font-size: 0.7rem;
 }
 
 .infoText {
@@ -71,6 +72,12 @@
      .infoText {
           font-size: 0.75rem;
      }
+}
+
+.button {
+     border: 2px solid var(--white-100);
+
+     font-size: 0.75rem;
 }
 
 .logo {

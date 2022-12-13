@@ -1,3 +1,4 @@
+import Button from "../../../../components/UI/Buttons/Button/Button";
 import styles from "./Header.module.css";
 import logoImage from "/static/logo.svg";
 
@@ -22,6 +23,7 @@ const Header = () => {
                          <span className={styles.infoTitle}>{"Время работы:"}</span>
                          <span className={styles.infoText}>{"с 9:30 до 17:00"}</span>
                     </div>
+                    <Button className={styles.button}>{"Заказать звонок"}</Button>
                </div>
 
                <img className={styles.logo} src={logoImage} alt={"Логотип"} />

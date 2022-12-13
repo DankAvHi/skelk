@@ -1,9 +1,8 @@
 import TextSection from "../TextSection/TextSection";
+import { TextSectionProps } from "../TextSection/TextSection.d";
 import styles from "./ImageTextSection.module.css";
 
-type ImageTextSectionProps = {
-     heading: string;
-     paragraph: string;
+type ImageTextSectionProps = TextSectionProps & {
      image: string;
 };
 

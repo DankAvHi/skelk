@@ -1,0 +1,74 @@
+.OurBenefits {
+     padding: 24px 12px;
+
+     width: 100%;
+
+     background: url("../../../../assets/benefitsBackground.jpg");
+     background-repeat: no-repeat;
+     background-position: center;
+     background-size: cover;
+
+     display: flex;
+     flex-direction: column;
+     gap: 48px;
+}
+
+.heading {
+     font-size: 2.105rem;
+     font-weight: 600;
+     text-align: center;
+}
+
+.benefits {
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+     gap: 64px;
+}
+
+@media screen and (max-width: 640px) {
+     .benefits {
+          flex-direction: column;
+          align-items: center;
+     }
+}
+
+.benefit {
+     max-width: 240px;
+     width: 100%;
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 24px;
+}
+
+.card {
+     padding: 24px;
+
+     border-radius: 36px;
+     border: 1px solid var(--app-accient-color);
+
+     max-width: 180px;
+     max-height: 166px;
+     width: 100%;
+     height: 100%;
+
+     background-color: var(--white-100);
+}
+
+.image {
+     width: 100%;
+}
+
+.text {
+     padding: 8px;
+
+     border-radius: 12px;
+     border: 1px solid var(--app-accient-color);
+
+     background-color: var(--white-100);
+
+     text-align: center;
+     font-size: 1.18rem;
+}

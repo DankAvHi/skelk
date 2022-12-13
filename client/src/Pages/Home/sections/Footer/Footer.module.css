@@ -1,0 +1,49 @@
+.Footer {
+     background-color: var(--app-accient-color);
+
+     display: flex;
+     justify-content: center;
+}
+.container {
+     padding: 12px;
+
+     max-width: 1280px;
+     width: 100%;
+
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+
+@media screen and (max-width: 640px) {
+     .container {
+          flex-direction: column;
+          gap: 12px;
+     }
+}
+
+.logo {
+     max-width: 320px;
+     width: 100%;
+}
+
+.orderCall {
+     padding: 10px;
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 10px;
+}
+
+.phoneNumber {
+     font-size: 1.315rem;
+     color: var(--white-100);
+}
+.button {
+     background-color: var(--white-100);
+
+     color: var(--app-accient-color);
+     font-size: 1.315rem;
+}

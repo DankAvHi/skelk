@@ -1,15 +1,19 @@
+import { TextSectionProps } from "./TextSection.d";
 import styles from "./TextSection.module.css";
-
-type TextSectionProps = {
-     heading: string;
-     paragraph: string;
-};
 
 const TextSection = (props: TextSectionProps) => {
      return (
-          <section className={styles.textSection}>
+          <section className={styles.TextSection}>
                <h2 className={styles.heading}>{props.heading}</h2>
-               <p className={styles.paragraph}>{props.paragraph}</p>
+               {typeof props.paragraph === "string" ? (
+                    <p className={styles.paragraph}>{props.paragraph}</p>
+               ) : (
+                    props.paragraph.map((paragraph, index) => (
+                         <p key={index} className={styles.paragraph}>
+                              {paragraph}
+                         </p>
+                    ))
+               )}
           </section>
      );
 };
