@@ -11,7 +11,7 @@ const orderBackCallController: RequestHandler = async (req, res) => {
           await transporter.sendMail({
                from: `СКЭЛК Склад электронных компонентов info@skelk.ru`,
                to: `${EMAIL_ADDRES}`,
-               subject: `Заявка на товар `,
+               subject: `Заявка на обратный звонок `,
                text: `Поступила заявка на обратный звонок.\nИмя клиента: ${name}\nНомер телефона клиента: ${phoneNumber}.`,
           });
 
